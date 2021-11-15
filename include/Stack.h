@@ -16,6 +16,17 @@
 #include <stdlib.h>
 
 /**
+ * @brief Type of value for add new element.
+ * 
+ */
+typedef enum type {
+    type_char,
+    type_int,
+    type_float,
+    type_double
+}type;
+
+/**
  * @brief Implementation of type boolean.
  * 
  */
@@ -29,13 +40,13 @@ typedef enum Bool
  * @brief Choose one of the four types.
  * 
  */
-typedef union Type
+typedef union UType
 {
     char STACK_TYPE_char;
     int STACK_TYPE_int;
     float STACK_TYPE_float;
     double STACK_TYPE_double;
-}Type;
+}UType;
 
 /**
  * @brief Structure of stack who takes one pointer of value of type "Type" and one pointer of next element.
@@ -43,7 +54,8 @@ typedef union Type
  */
 typedef struct Stack
 {
-    union Type value;
+    type type_of_value;
+    union UType value;
     struct Stack *next;
 }Stack;
 
@@ -67,8 +79,32 @@ Bool STACK_is_empty (Stack *stack);
  * 
  * @param[in] stack 
  * @param[in] value 
+ * @param[in] type_of_value
  * @return Stack* 
  */
-Stack* STACK_new_element (Stack *stack, Type value);
+Stack* STACK_new_element (Stack *stack, UType value, type type_of_value);
+
+/**
+ * @brief Delete element in top.
+ * 
+ * @param[in] stack 
+ * @return Stack* 
+ */
+Stack* STACK_del_element (Stack *stack);
+
+/**
+ * @brief Return the top value of the stack.
+ * 
+ * @param[in] stack 
+ * @return UType 
+ */
+UType STACK_top_value (Stack *stack);
+
+/**
+ * @brief Display element of stack.
+ * 
+ * @param stack 
+ */
+void STACK_show (Stack *stack);
 
 #endif
