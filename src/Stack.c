@@ -58,6 +58,9 @@ Stack* STACK_new_element (Stack *stack, UType value, type type_of_value)
  * @return Stack* 
  */
 Stack* STACK_del_element (Stack *stack) {
+    if (STACK_is_empty (stack))
+        return stack;
+    
     Stack *element = stack->next;
     free(stack);
     return element;
@@ -139,6 +142,11 @@ int STACK_height (Stack *stack) {
  * @return Stack* 
  */
 Stack* STACK_clean_stack (Stack *stack) {
+    if (STACK_is_empty (stack)) {
+        printf ("The stack is empty\n");
+        putchar('\n');
+        return stack;
+    }
 
     while (!STACK_is_empty (stack)) {
         stack = STACK_del_element (stack);
