@@ -107,4 +107,20 @@ UType STACK_top_value (Stack *stack);
  */
 void STACK_show (Stack *stack);
 
+/**
+ * @brief Return size of stack.
+ * 
+ * @param[in] stack 
+ * @return int 
+ */
+int STACK_height (Stack *stack);
+
+/**
+ * @brief Clean all the elements of stack.
+ * 
+ * @param[in] stack 
+ * @return Stack* 
+ */
+Stack* STACK_clean_stack (Stack *stack);
+
 #endif

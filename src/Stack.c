@@ -54,7 +54,7 @@ Stack* STACK_new_element (Stack *stack, UType value, type type_of_value)
 /**
  * @brief Delete element in top.
  * 
- * @param[i] stack 
+ * @param[in] stack 
  * @return Stack* 
  */
 Stack* STACK_del_element (Stack *stack) {
@@ -76,7 +76,7 @@ UType STACK_top_value (Stack *stack) {
 /**
  * @brief Display element of stack.
  * 
- * @param stack 
+ * @param[in] stack 
  */
 void STACK_show (Stack *stack) {
     if (STACK_is_empty (stack))
@@ -112,6 +112,45 @@ void STACK_show (Stack *stack) {
     }
     putchar ('\n');
     return;
+}
+
+/**
+ * @brief Return size of stack.
+ * 
+ * @param[in] stack 
+ * @return int 
+ */
+int STACK_height (Stack *stack) {
+    Stack *temp = stack;
+    int height = 0;
+
+    while (!STACK_is_empty (temp)) {
+        height++;
+        temp = temp->next;
+    }
+
+    return height;
+}
+
+/**
+ * @brief Clean all the elements of stack.
+ * 
+ * @param[in] stack 
+ * @return Stack* 
+ */
+Stack* STACK_clean_stack (Stack *stack) {
+
+    while (!STACK_is_empty (stack)) {
+        stack = STACK_del_element (stack);
+    }
+
+    if (STACK_is_empty (stack))
+        printf ("Clean succes !\n");
+    else
+        printf ("Clean error !\n");
+    
+    putchar('\n');
+    return stack;
 }
 
 
