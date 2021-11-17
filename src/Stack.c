@@ -57,7 +57,8 @@ Stack* STACK_new_element (Stack *stack, UType value, type type_of_value)
  * @param[in] stack 
  * @return Stack* 
  */
-Stack* STACK_del_element (Stack *stack) {
+Stack* STACK_del_element (Stack *stack) 
+{
     if (STACK_is_empty (stack))
         return stack;
     
@@ -72,7 +73,8 @@ Stack* STACK_del_element (Stack *stack) {
  * @param[in] stack 
  * @return UType 
  */
-UType STACK_top_value (Stack *stack) {
+UType STACK_top_value (Stack *stack) 
+{
     return stack->value;
 }
 
@@ -81,13 +83,15 @@ UType STACK_top_value (Stack *stack) {
  * 
  * @param[in] stack 
  */
-void STACK_show (Stack *stack) {
+void STACK_show (Stack *stack) 
+{
     printf ("\n[PRINTING OF STACK]\n");
     if (STACK_is_empty (stack))
         printf ("[Stack is empty]\n");
 
     Stack *temp = stack;
-    while (!STACK_is_empty (temp)) {
+    while (!STACK_is_empty (temp)) 
+    {
         switch (temp->type_of_value)
         {
         case type_int:
@@ -124,11 +128,13 @@ void STACK_show (Stack *stack) {
  * @param[in] stack 
  * @return int 
  */
-int STACK_height (Stack *stack) {
+int STACK_height (Stack *stack) 
+{
     Stack *temp = stack;
     int height = 0;
 
-    while (!STACK_is_empty (temp)) {
+    while (!STACK_is_empty (temp)) 
+    {
         height++;
         temp = temp->next;
     }
@@ -142,16 +148,18 @@ int STACK_height (Stack *stack) {
  * @param[in] stack 
  * @return Stack* 
  */
-Stack* STACK_clean_stack (Stack *stack) {
-    if (STACK_is_empty (stack)) {
+Stack* STACK_clean_stack (Stack *stack) 
+{
+    if (STACK_is_empty (stack)) 
+    {
         printf ("The stack is empty\n");
         putchar('\n');
         return stack;
     }
 
-    while (!STACK_is_empty (stack)) {
+    while (!STACK_is_empty (stack)) 
         stack = STACK_del_element (stack);
-    }
+    
 
     if (STACK_is_empty (stack))
         printf ("Clean memory succes  !\n");
@@ -170,10 +178,31 @@ Stack* STACK_clean_stack (Stack *stack) {
  * @param[in] num_element 
  * @return Stack* 
  */
-Stack* STACK_new_stack_init (UType value, type type_of_value, int num_element) {
+Stack* STACK_new_stack_init (UType value, type type_of_value, int num_element) 
+{
     Stack *stack = STACK_new_stack ();
-    for (int i = 0; i < num_element; i++) {
+    for (int i = 0; i < num_element; i++) 
+    {
         stack = STACK_new_element (stack, value, type_of_value);
     }
     return stack;
+}
+
+/**
+ * @brief Return true if the value is in the stack else if false.
+ * 
+ * @param[in] stack 
+ * @param[in] value 
+ * @return Bool 
+ */
+Bool STACK_number_in_stack (Stack *stack, UType value) 
+{
+    Stack *temp = stack;
+    for (int i = 0; i < STACK_height (temp); i++) 
+    {
+        if (STACK_top_value (temp).STACK_TYPE_int == value.STACK_TYPE_int)
+            return true;
+        temp = temp->next;
+    }
+    return false;
 }
