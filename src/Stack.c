@@ -82,6 +82,7 @@ UType STACK_top_value (Stack *stack) {
  * @param[in] stack 
  */
 void STACK_show (Stack *stack) {
+    printf ("\n[PRINTING OF STACK]\n");
     if (STACK_is_empty (stack))
         printf ("[Stack is empty]\n");
 
@@ -153,13 +154,26 @@ Stack* STACK_clean_stack (Stack *stack) {
     }
 
     if (STACK_is_empty (stack))
-        printf ("Clean succes !\n");
+        printf ("Clean memory succes  !\n");
     else
-        printf ("Clean error !\n");
+        printf ("Clean memory error !\n");
     
     putchar('\n');
     return stack;
 }
 
-
-
+/**
+ * @brief Initialize the elements of stack with one value for desired number of elements.
+ * 
+ * @param[in] value 
+ * @param[in] type_of_value 
+ * @param[in] num_element 
+ * @return Stack* 
+ */
+Stack* STACK_new_stack_init (UType value, type type_of_value, int num_element) {
+    Stack *stack = STACK_new_stack ();
+    for (int i = 0; i < num_element; i++) {
+        stack = STACK_new_element (stack, value, type_of_value);
+    }
+    return stack;
+}

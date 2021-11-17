@@ -123,4 +123,15 @@ int STACK_height (Stack *stack);
  */
 Stack* STACK_clean_stack (Stack *stack);
 
+/**
+ * @brief Initialize the elements of stack with one value for desired number of elements.
+ * 
+ * @param[in] stack 
+ * @param[in] value 
+ * @param[in] type_of_value 
+ * @param[in] num_element 
+ * @return Stack* 
+ */
+Stack* STACK_new_stack_init (UType value, type type_of_value, int num_element);
+
 #endif
