@@ -14,39 +14,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-/**
- * @brief Type of value for add new element.
- * 
- */
-typedef enum type {
-    type_char,
-    type_int,
-    type_float,
-    type_double
-}type;
-
-/**
- * @brief Implementation of type boolean.
- * 
- */
-typedef enum Bool
-{
-    false,
-    true
-}Bool;
-
-/**
- * @brief Choose one of the four types.
- * 
- */
-typedef union UType
-{
-    char STACK_TYPE_char;
-    int STACK_TYPE_int;
-    float STACK_TYPE_float;
-    double STACK_TYPE_double;
-}UType;
+#include "Structuration_data.h"
 
 /**
  * @brief Structure of stack who takes one pointer of value of type "Type" and one pointer of next element.
@@ -58,6 +26,16 @@ typedef struct Stack
     union UType value;
     struct Stack *next;
 }Stack;
+
+/**
+ * @brief Couple of stack.
+ * 
+ */
+typedef struct CStack 
+{
+    struct Stack *stack1;
+    struct Stack *stack2;
+}CStack;
 
 /**
  * @brief Empty stack.
@@ -133,5 +111,14 @@ Stack* STACK_clean_stack (Stack *stack);
  * @return Stack* 
  */
 Stack* STACK_new_stack_init (UType value, type type_of_value, int num_element);
+
+/**
+ * @brief Return true if the value is in the stack else if false.
+ * 
+ * @param[in] stack 
+ * @param[in] value 
+ * @return Bool 
+ */
+Bool STACK_number_in_stack (Stack *stack, UType value);
 
 #endif
