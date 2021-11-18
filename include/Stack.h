@@ -12,8 +12,6 @@
 #ifndef __STACK_H
 #define __STACK_H
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "Structuration_data.h"
 
 /**
@@ -38,7 +36,7 @@ typedef struct CStack
 }CStack;
 
 /**
- * @brief Empty stack.
+ * @brief Create empty stack.
  * 
  * @return Stack* 
  */

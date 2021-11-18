@@ -8,9 +8,11 @@
  * @copyright Copyright (c) 2021
  * 
  */
-
 #ifndef __STRUCTURATION_DATA_H
-#define __STACK_H
+#define __STRUCTURATION_DATA_H
+
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * @brief Type of value for add new element.
