@@ -60,4 +60,45 @@ Bool FILE_is_empty (File *file);
  */
 File* FILE_new_element (File *file, UType value, type type_of_value);
 
+/**
+ * @brief Return size of file.
+ * 
+ * @param[in] file 
+ * @return int 
+ */
+int FILE_height (File *file);
+
+/**
+ * @brief Delete element in head.
+ * 
+ * @param[in] file 
+ * @return File* 
+ */
+File* FILE_del_element (File *file);
+
+/**
+ * @brief Return the head value of the file.
+ * 
+ * @param[in] file 
+ * @return UType 
+ */
+UType FILE_head_value (File *file);
+
+/**
+ * @brief Return the queue value of the file.
+ * 
+ * @param[in] file 
+ * @return UType 
+ */
+UType FILE_queue_value (File *file);
+
+/**
+ * @brief Display element of file.
+ * 
+ * @param[in] file 
+ */
+void FILE_show (File *file);
+
+
+
 #endif
