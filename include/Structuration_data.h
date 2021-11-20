@@ -1,7 +1,7 @@
 /**
  * @file Structuration_data.h
  * @author ZARIKIAN Hayk (haykzrk@gmail.com)
- * @brief 
+ * @brief Specification of data common.
  * @version 0.1
  * @date 2021-11-17
  * 
