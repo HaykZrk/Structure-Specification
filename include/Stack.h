@@ -1,7 +1,7 @@
 /**
  * @file Stack.h
  * @author ZARIKIAN Hayk (haykzrk@gmail.com)
- * @brief Specification of stack
+ * @brief Specification of stack.
  * @version 0.1
  * @date 2021-11-14
  * 
