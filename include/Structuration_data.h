@@ -41,10 +41,10 @@ typedef enum Bool
  */
 typedef union UType
 {
-    char STACK_TYPE_char;
-    int STACK_TYPE_int;
-    float STACK_TYPE_float;
-    double STACK_TYPE_double;
+    char TYPE_char;
+    int TYPE_int;
+    float TYPE_float;
+    double TYPE_double;
 }UType;
 
 #endif

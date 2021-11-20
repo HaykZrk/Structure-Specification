@@ -150,10 +150,11 @@ int STACK_height (Stack *stack)
  */
 Stack* STACK_clean_stack (Stack *stack) 
 {
+    printf ("\n[CLEANING OF FILE] :\n");
+
     if (STACK_is_empty (stack)) 
     {
-        printf ("The stack is empty\n");
-        putchar('\n');
+        printf ("\nThe stack is empty !\n");
         return stack;
     }
 
@@ -200,7 +201,7 @@ Bool STACK_number_in_stack (Stack *stack, UType value)
     Stack *temp = stack;
     for (int i = 0; i < STACK_height (temp); i++) 
     {
-        if (STACK_top_value (temp).STACK_TYPE_int == value.STACK_TYPE_int)
+        if (STACK_top_value (temp).TYPE_int == value.TYPE_int)
             return true;
         temp = temp->next;
     }

@@ -137,15 +137,67 @@ UType FILE_queue_value (File *file)
  */
 void FILE_show (File *file)
 {
-    File *temp = file;
+    printf ("\n[PRINTING OF FILE] :\n");
+    if (FILE_is_empty (file))
+        printf ("[File is empty]\n");
 
-    while (!FILE_is_empty (temp))
+    QueueElement *temp = file->head;
+    while (temp != NULL)
     {
-        printf ("[%d] ", temp->head->value.STACK_TYPE_int);
-        temp = FILE_del_element (temp);
+        switch (temp->type_of_value)
+        {
+            case type_int:
+                printf ("[%d] ", temp->value);
+                break;
+            
+            case type_char:
+                printf ("[%c] ", temp->value);
+                break;
+
+            case type_double:
+                printf ("[%lf] ", temp->value);
+                break;
+
+            case type_float:
+                printf ("[%.3f] ", temp->value);
+                break;
+
+            default:
+                printf ("[Element incorrect]\n");
+                break;
+        }
+        temp = temp->next;
     }
 
     putchar ('\n');
     return;
 }
 
+/**
+ * @brief Clean all the elements of file.
+ * 
+ * @param[in] file 
+ * @return File* 
+ */
+File* FILE_clean (File *file) 
+{
+    printf ("\n[CLEANING OF FILE] :\n");
+
+    if (FILE_is_empty (file)) 
+    {
+        printf ("\nThe file is empty !\n");
+        return file;
+    }
+
+    while (!FILE_is_empty (file))
+        file = FILE_del_element (file);
+
+
+    if (FILE_is_empty (file))
+        printf ("Clean memory succes !\n");
+    else
+        printf ("Clean memory error !\n");
+
+    putchar ('\n');
+    return file;
+}

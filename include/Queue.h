@@ -99,6 +99,13 @@ UType FILE_queue_value (File *file);
  */
 void FILE_show (File *file);
 
+/**
+ * @brief Clean all the elements of file.
+ * 
+ * @param[in] file 
+ */
+File* FILE_clean (File *file);
+
 
 
 #endif
