@@ -15,19 +15,20 @@
  * @brief 
  * 
  */
-typedef struct List
+typedef struct ListElement
 {
     UType value;
     type type_of_value;
+    struct List *previous;
     struct List *next;
-}List;
+}ListElement;
 
 /**
  * @brief Empty file.
  * 
  * @return List* 
  */
-List* LIST_new_list (void);
+ListElement* LIST_new_list (void);
 
 /**
  * @brief Return true or false if list is empty.
@@ -69,7 +70,7 @@ UType LIST_queue_value (List *list);
  * @param[in] type_of_value 
  * @return List* 
  */
-List* LIST_push_front (List *list, UType value, type type_of_value);
+ListElement* LIST_push_front (ListElement *list, UType value, type type_of_value);
 
 /**
  * @brief Delete element in front of list.
@@ -77,7 +78,7 @@ List* LIST_push_front (List *list, UType value, type type_of_value);
  * @param[in] list 
  * @return List* 
  */
-List* LIST_pop_front (List *list);
+ListElement* LIST_pop_front (ListElement *list);
 
 /**
  * @brief Add new element in back of list.
@@ -87,7 +88,7 @@ List* LIST_pop_front (List *list);
  * @param[in] type_of_value 
  * @return List* 
  */
-List* LIST_push_back (List *list,UType value, type type_of_value);
+ListElement* LIST_push_back (ListElement *list, UType value, type type_of_value);
 
 /**
  * @brief Delete element in back of list.
@@ -95,11 +96,11 @@ List* LIST_push_back (List *list,UType value, type type_of_value);
  * @param[in] list 
  * @return List* 
  */
-List* LIST_pop_back (List *list);
+ListElement* LIST_pop_back (ListElement *list);
 
 /**
  * @brief Display element of list.
  * 
  * @param[in] list 
  */
-void LIST_show (List *list);
+void LIST_show (ListElement *list);

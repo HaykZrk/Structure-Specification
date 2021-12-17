@@ -16,7 +16,7 @@
  * 
  * @return List* 
  */
-List* LIST_new_list (void)
+ListElement* LIST_new_list (void)
 {
     return NULL;
 }
@@ -27,7 +27,7 @@ List* LIST_new_list (void)
  * @param[in] list 
  * @return Bool 
  */
-Bool LIST_is_empty (List *list)
+Bool LIST_is_empty (ListElement *list)
 {
     if (list == NULL)
         return true;
@@ -40,9 +40,9 @@ Bool LIST_is_empty (List *list)
  * @param[in] list 
  * @return int 
  */
-int LIST_height (List *list)
+int LIST_height (ListElement *list)
 {
-    List *temp = list;
+    ListElement *temp = list;
     int height = 0;
 
     while (!LIST_is_empty (temp))
@@ -55,12 +55,12 @@ int LIST_height (List *list)
 }
 
 /**
- * @brief 
+ * @brief Return the top value of the list.
  * 
  * @param[in] list 
  * @return UType 
  */
-UType LIST_head_value (List *list)
+UType LIST_head_value (ListElement *list)
 {
     return list->value;
 }
@@ -71,9 +71,9 @@ UType LIST_head_value (List *list)
  * @param[in] list 
  * @return UType 
  */
-UType LIST_queue_value (List *list)
+UType LIST_queue_value (ListElement *list)
 {
-    List *temp = list;
+    ListElement *temp = list;
 
     while (!LIST_is_empty (temp))
     {
@@ -91,9 +91,9 @@ UType LIST_queue_value (List *list)
  * @param[in] type_of_value 
  * @return List* 
  */
-List* LIST_push_front (List *list, UType value, type type_of_value)
+ListElement* LIST_push_front (ListElement *list, UType value, type type_of_value)
 {
-    List *element = malloc(sizeof(List));
+    ListElement *element = malloc(sizeof(ListElement));
     element->value = value;
     element->type_of_value = type_of_value;
     element->next = list;
@@ -106,9 +106,9 @@ List* LIST_push_front (List *list, UType value, type type_of_value)
  * @param[in] list 
  * @return List* 
  */
-List* LIST_pop_front (List *list)
+ListElement* LIST_pop_front (ListElement *list)
 {
-    List *temp = list;
+    ListElement *temp = list;
     if (LIST_is_empty (list))
         return list;
 
@@ -125,9 +125,9 @@ List* LIST_pop_front (List *list)
  * @param[in] type_of_value 
  * @return List* 
  */
-List* LIST_push_back (List *list, UType value, type type_of_value)
+ListElement* LIST_push_back (ListElement *list, UType value, type type_of_value)
 {
-    List *element = malloc(sizeof(List));
+    ListElement *element = malloc(sizeof(List));
     element->value = value;
     element->next = NULL;
     element->type_of_value = type_of_value;
@@ -135,7 +135,7 @@ List* LIST_push_back (List *list, UType value, type type_of_value)
     if (LIST_is_empty (list))
         return element;
 
-    List *temp = list;
+    ListElement *temp = list;
 
     while (temp->next != NULL)
         temp = temp->next;
@@ -150,7 +150,7 @@ List* LIST_push_back (List *list, UType value, type type_of_value)
  * @param[in] list 
  * @return List* 
  */
-List* LIST_pop_back (List *list)
+ListElement* LIST_pop_back (ListElement *list)
 {
     if (LIST_is_empty (list))
         return list;
@@ -161,8 +161,8 @@ List* LIST_pop_back (List *list)
         list = NULL;
     }
 
-    List *temp = list;
-    List *before = list;
+    ListElement *temp = list;
+    ListElement *before = list;
 
     while (temp->next != NULL)
     {
@@ -182,13 +182,13 @@ List* LIST_pop_back (List *list)
  * 
  * @param[in] list 
  */
-void LIST_show (List *list)
+void LIST_show (ListElement *list)
 {
     printf ("\n[PRINTING OF LIST] :\n");
     if (LIST_is_empty (list))
         printf ("[List is empty]\n");
 
-    List *temp = list;
+    ListElement *temp = list;
     while (!LIST_is_empty (temp))
     {
         switch (temp->type_of_value)
