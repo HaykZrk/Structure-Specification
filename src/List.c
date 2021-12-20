@@ -29,9 +29,7 @@ ListElement* LIST_new_list (void)
  */
 Bool LIST_is_empty (ListElement *list)
 {
-    if (list == NULL)
-        return true;
-    return false;
+    return list == NULL;
 }
 
 /**
@@ -42,13 +40,13 @@ Bool LIST_is_empty (ListElement *list)
  */
 int LIST_height (ListElement *list)
 {
-    ListElement *temp = list;
+    ListElement *head = list;
     int height = 0;
 
-    while (!LIST_is_empty (temp))
+    while (head != NULL)
     {
         height++;
-        temp = temp->next;
+        head = head->next;
     }
 
     return height;
@@ -73,14 +71,14 @@ UType LIST_head_value (ListElement *list)
  */
 UType LIST_queue_value (ListElement *list)
 {
-    ListElement *temp = list;
+    ListElement *head = list;
 
-    while (!LIST_is_empty (temp))
+    while (head != NULL)
     {
-        temp = temp->next;
+        head = head->next;
     }
 
-    return temp->value;
+    return head->value;
 }
 
 /**
@@ -108,13 +106,12 @@ ListElement* LIST_push_front (ListElement *list, UType value, type type_of_value
  */
 ListElement* LIST_pop_front (ListElement *list)
 {
-    ListElement *temp = list;
     if (LIST_is_empty (list))
         return list;
 
-    temp = temp->next;
-    free(list);
-    return temp;
+    ListElement *new_head = list->next;
+    free (list);
+    return new_head;
 }
 
 /**
@@ -127,7 +124,7 @@ ListElement* LIST_pop_front (ListElement *list)
  */
 ListElement* LIST_push_back (ListElement *list, UType value, type type_of_value)
 {
-    ListElement *element = malloc(sizeof(List));
+    ListElement *element = malloc(sizeof(ListElement));
     element->value = value;
     element->next = NULL;
     element->type_of_value = type_of_value;
@@ -135,12 +132,12 @@ ListElement* LIST_push_back (ListElement *list, UType value, type type_of_value)
     if (LIST_is_empty (list))
         return element;
 
-    ListElement *temp = list;
+    ListElement *queue = list;
 
-    while (temp->next != NULL)
-        temp = temp->next;
+    while (queue->next != NULL)
+        queue = queue->next;
 
-    temp->next = element;
+    queue->next = element;
     return list;
 }
 
@@ -157,22 +154,22 @@ ListElement* LIST_pop_back (ListElement *list)
 
     if (list->next == NULL)
     {
-        free(list);
+        free (list);
         list = NULL;
     }
 
-    ListElement *temp = list;
-    ListElement *before = list;
+    ListElement *queue = list;
+    ListElement *previous_queue = list;
 
-    while (temp->next != NULL)
+    while (queue->next != NULL)
     {
-        before = temp;
-        temp = temp->next;
+        previous_queue = queue;
+        queue = queue->next;
     }
 
-    before->next = NULL;
-    free(temp);
-    temp = NULL;
+    previous_queue->next = NULL;
+    free (queue);
+    queue = NULL;
 
     return list;
 }
@@ -188,32 +185,32 @@ void LIST_show (ListElement *list)
     if (LIST_is_empty (list))
         printf ("[List is empty]\n");
 
-    ListElement *temp = list;
-    while (!LIST_is_empty (temp))
+    ListElement *head = list;
+    while (!LIST_is_empty (head))
     {
-        switch (temp->type_of_value)
+        switch (head->type_of_value)
         {
         case type_int:
-            printf ("[%d] ", temp->value);
+            printf ("[%d] ", head->value);
             break;
         
         case type_char:
-            printf ("[%c] ", temp->value);
+            printf ("[%c] ", head->value);
             break;
 
         case type_double:
-            printf ("[%lf] ", temp->value);
+            printf ("[%lf] ", head->value);
             break;
 
         case type_float:
-            printf ("[%.3f] ", temp->value);
+            printf ("[%.3f] ", head->value);
             break;
         
         default:
             printf ("[Element incorrect]\n");
             break;
         }
-        temp = temp->next;
+        head = head->next;
     }
     putchar ('\n');
     return;

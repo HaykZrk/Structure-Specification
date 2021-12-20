@@ -72,16 +72,14 @@ File* FILE_new_element (File *file, UType value, type type_of_value)
  */
 int FILE_height (File *file) 
 {
-    File *temp = file;
+    QueueElement *head = file->head;
     int height = 0;
 
-    while (!FILE_is_empty (temp)) {
+    while (head != NULL) {
         height++;
-        temp->head = temp->head->next;
+        head = head->next;
     }
-
     return height;
-
 }
 
 /**
@@ -92,7 +90,7 @@ int FILE_height (File *file)
  */
 File* FILE_del_element (File *file) 
 {
-    QueueElement *temp = file->head;
+    QueueElement *del_element = file->head;
 
     if (file->head == file->queue) 
     {
@@ -104,7 +102,7 @@ File* FILE_del_element (File *file)
         file->head = file->head->next;
     }
 
-    free(temp);
+    free (del_element);
     return file;
 }
 
@@ -141,32 +139,32 @@ void FILE_show (File *file)
     if (FILE_is_empty (file))
         printf ("[File is empty]\n");
 
-    QueueElement *temp = file->head;
-    while (temp != NULL)
+    QueueElement *head = file->head;
+    while (head != NULL)
     {
-        switch (temp->type_of_value)
+        switch (head->type_of_value)
         {
             case type_int:
-                printf ("[%d] ", temp->value);
+                printf ("[%d] ", head->value);
                 break;
             
             case type_char:
-                printf ("[%c] ", temp->value);
+                printf ("[%c] ", head->value);
                 break;
 
             case type_double:
-                printf ("[%lf] ", temp->value);
+                printf ("[%lf] ", head->value);
                 break;
 
             case type_float:
-                printf ("[%.3f] ", temp->value);
+                printf ("[%.3f] ", head->value);
                 break;
 
             default:
                 printf ("[Element incorrect]\n");
                 break;
         }
-        temp = temp->next;
+        head = head->next;
     }
 
     putchar ('\n');

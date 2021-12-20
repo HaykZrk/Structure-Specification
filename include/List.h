@@ -19,8 +19,8 @@ typedef struct ListElement
 {
     UType value;
     type type_of_value;
-    struct List *previous;
-    struct List *next;
+    struct ListElement *previous;
+    struct ListElement *next;
 }ListElement;
 
 /**
@@ -36,7 +36,7 @@ ListElement* LIST_new_list (void);
  * @param[in] list 
  * @return Bool 
  */
-Bool LIST_is_empty (List *list);
+Bool LIST_is_empty (ListElement *list);
 
 /**
  * @brief Return size of list.
@@ -44,7 +44,7 @@ Bool LIST_is_empty (List *list);
  * @param[in] list 
  * @return int 
  */
-int LIST_height (List *list);
+int LIST_height (ListElement *list);
 
 /**
  * @brief Return the top value of the list.
@@ -52,7 +52,7 @@ int LIST_height (List *list);
  * @param[in] list 
  * @return UType 
  */
-UType LIST_head_value (List *list);
+UType LIST_head_value (ListElement *list);
 
 /**
  * @brief Return the queue value of the list.
@@ -60,7 +60,7 @@ UType LIST_head_value (List *list);
  * @param[in] list 
  * @return UType 
  */
-UType LIST_queue_value (List *list);
+UType LIST_queue_value (ListElement *list);
 
 /**
  * @brief Add new element in front of list.

@@ -29,9 +29,7 @@ Stack* STACK_new_stack (void)
  */
 Bool STACK_is_empty (Stack *stack) 
 {
-    if (stack == NULL)
-        return true;
-    return false;
+    return stack == NULL;
 }
 
 /**
@@ -62,9 +60,9 @@ Stack* STACK_del_element (Stack *stack)
     if (STACK_is_empty (stack))
         return stack;
     
-    Stack *element = stack->next;
-    free(stack);
-    return element;
+    Stack *new_head = stack->next;
+    free (stack);
+    return new_head;
 }
 
 /**
@@ -89,25 +87,25 @@ void STACK_show (Stack *stack)
     if (STACK_is_empty (stack))
         printf ("[Stack is empty]\n");
 
-    Stack *temp = stack;
-    while (!STACK_is_empty (temp)) 
+    Stack *head = stack;
+    while (head != NULL) 
     {
-        switch (temp->type_of_value)
+        switch (head->type_of_value)
         {
         case type_int:
-            printf ("[%d]\n", temp->value);
+            printf ("[%d]\n", head->value);
             break;
         
         case type_char:
-            printf ("[%c]\n", temp->value);
+            printf ("[%c]\n", head->value);
             break;
         
         case type_double:
-            printf ("[%lf]\n", temp->value);
+            printf ("[%lf]\n", head->value);
             break;
 
         case type_float:
-            printf ("[%.3f]\n", temp->value);
+            printf ("[%.3f]\n", head->value);
             break;
         
         default:
@@ -115,7 +113,7 @@ void STACK_show (Stack *stack)
             break;
         }
 
-        temp = temp->next;
+        head = head->next;
 
     }
     putchar ('\n');
@@ -130,13 +128,13 @@ void STACK_show (Stack *stack)
  */
 int STACK_height (Stack *stack) 
 {
-    Stack *temp = stack;
+    Stack *head = stack;
     int height = 0;
 
-    while (!STACK_is_empty (temp)) 
+    while (head != NULL) 
     {
         height++;
-        temp = temp->next;
+        head = head->next;
     }
 
     return height;
@@ -198,12 +196,12 @@ Stack* STACK_new_stack_init (UType value, type type_of_value, int num_element)
  */
 Bool STACK_number_in_stack (Stack *stack, UType value) 
 {
-    Stack *temp = stack;
-    for (int i = 0; i < STACK_height (temp); i++) 
+    Stack *head = stack;
+    for (int i = 0; i < STACK_height (head); i++) 
     {
-        if (STACK_top_value (temp).TYPE_int == value.TYPE_int)
+        if (STACK_top_value (head).TYPE_int == value.TYPE_int)
             return true;
-        temp = temp->next;
+        head = head->next;
     }
     return false;
 }
