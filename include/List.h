@@ -39,6 +39,30 @@ ListElement* LIST_new_list (void);
 Bool LIST_is_empty (ListElement *list);
 
 /**
+ * @brief 
+ * 
+ * @param list 
+ * @return ListElement* 
+ */
+ListElement* LIST_circular (ListElement *list);
+
+/**
+ * @brief 
+ * 
+ * @param list 
+ * @return ListElement* 
+ */
+ListElement* LIST_no_circular (ListElement *list);
+
+/**
+ * @brief 
+ * 
+ * @param list 
+ * @return Bool 
+ */
+Bool LIST_is_circular (ListElement *list);
+
+/**
  * @brief Return size of list.
  * 
  * @param[in] list 

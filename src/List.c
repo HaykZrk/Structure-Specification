@@ -21,6 +21,28 @@ ListElement* LIST_new_list (void)
     return NULL;
 }
 
+ListElement* LIST_circular (ListElement *list)
+{
+    if (LIST_is_circular (list) || LIST_is_empty (list))
+        return list;
+
+    ListElement *queue = list;
+
+    while (queue->next != NULL)
+    {
+        queue = queue->next;
+    }
+
+    queue->next = list;
+    list->previous = queue;
+    return list;
+}
+
+Bool LIST_is_circular (ListElement *list)
+{
+    return list->previous != NULL;
+}
+
 /**
  * @brief Return true or false if list is empty.
  * 
