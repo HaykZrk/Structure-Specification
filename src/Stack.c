@@ -84,6 +84,7 @@ UType STACK_top_value (Stack *stack)
 void STACK_show (Stack *stack) 
 {
     printf ("\n[PRINTING OF STACK]\n");
+    printf ("Size of stack : %d\n", STACK_height (stack));
     if (STACK_is_empty (stack))
         printf ("[Stack is empty]\n");
 
@@ -148,7 +149,7 @@ int STACK_height (Stack *stack)
  */
 Stack* STACK_clean_stack (Stack *stack) 
 {
-    printf ("\n[CLEANING OF FILE] :\n");
+    printf ("\n[CLEANING OF STACK] :\n");
 
     if (STACK_is_empty (stack)) 
     {
