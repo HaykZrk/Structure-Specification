@@ -39,9 +39,9 @@ ListElement* LIST_new_list (void);
 Bool LIST_is_empty (ListElement *list);
 
 /**
- * @brief 
+ * @brief Transform the list in circular list.
  * 
- * @param list 
+ * @param[in] list 
  * @return ListElement* 
  */
 ListElement* LIST_circular (ListElement *list);
@@ -49,15 +49,15 @@ ListElement* LIST_circular (ListElement *list);
 /**
  * @brief 
  * 
- * @param list 
+ * @param[in] list 
  * @return ListElement* 
  */
 ListElement* LIST_no_circular (ListElement *list);
 
 /**
- * @brief 
+ * @brief Return true or false if list is circular.
  * 
- * @param list 
+ * @param[in] list 
  * @return Bool 
  */
 Bool LIST_is_circular (ListElement *list);

@@ -21,6 +21,12 @@ ListElement* LIST_new_list (void)
     return NULL;
 }
 
+/**
+ * @brief Transform the list in circular list.
+ * 
+ * @param[in] list 
+ * @return ListElement* 
+ */
 ListElement* LIST_circular (ListElement *list)
 {
     if (LIST_is_circular (list) || LIST_is_empty (list))
@@ -38,6 +44,12 @@ ListElement* LIST_circular (ListElement *list)
     return list;
 }
 
+/**
+ * @brief Return true or false if list is circular.
+ * 
+ * @param[in] list 
+ * @return Bool 
+ */
 Bool LIST_is_circular (ListElement *list)
 {
     return list->previous != NULL;
