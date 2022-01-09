@@ -3,6 +3,7 @@
 Updating functions/files regularly
 
 I) Files
+
 	NB : It is possible to make a stack with different types, however it is not necessarily recommended, 
 	     the objective being to have the most homogeneous and free library.
 
