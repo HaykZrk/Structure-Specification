@@ -9,6 +9,7 @@ I) Files
 	Structuration_date.h : Structure for all files
 
 	Stack.h - Stack.c : File gathering a stack structure with several useful and fast functions. 
-			    The characteristics of the battery are correctly respected and as homogeneous as possible.
+			    The characteristics of the battery are correctly respected and as homogeneous 
+			    as possible.
 
 	
