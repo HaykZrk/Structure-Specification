@@ -45,6 +45,26 @@ ListElement* LIST_circular (ListElement *list)
 }
 
 /**
+ * @brief Transform the list in no-circular list.
+ * 
+ * @param[in] list 
+ * @return ListElement* 
+ */
+ListElement* LIST_no_circular (ListElement *list)
+{
+    if (!LIST_is_circular (list) || LIST_is_empty (list))
+        return list;
+
+    ListElement *queue = list->previous;
+    ListElement *tete = list;
+
+    queue->next = NULL;
+    tete->previous = NULL;
+    
+    return list;
+}
+
+/**
  * @brief Return true or false if list is circular.
  * 
  * @param[in] list 
